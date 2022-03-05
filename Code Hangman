@@ -6,7 +6,7 @@
 
 using namespace std ;
 
-const string word[]= {"Naruto","Sasuke","Rasengan","Bankai","Rickroll"};
+const string word[]= {"Naruto","Sasuke","RAsengan","BanKai","RiCkroll"};
 
 string Tolower(const string& word){
     string out = string(word.length(),' ') ;
@@ -92,14 +92,13 @@ const string picture[] = {
 
 
 void renderGame(const string& secretWord, const string& guessWord, int badGuessCount){
-    for(int i=0 ; i<80
-     ;i++) cout << "\n";
+    system("cls") ;
      if(secretWord==Tolower(word[0])) cout << "Hint: A character in Naruto series..." << endl;
      if(secretWord==Tolower(word[1])) cout << "Hint: A character in Naruto series..." << endl ;
      if(secretWord==Tolower(word[2])) cout << "Hint: A ninjustu in Naruto series..." << endl ;
      if(secretWord==Tolower(word[3])) cout << "Hint: An iconic phrase in Bleach series..." << endl ;
      if(secretWord==Tolower(word[4])) cout << "Hint: Best Trolling..." << endl ;
-    cout << guessWord << " " << badGuessCount << endl ;
+    cout /*<< secretWord << " " */<< guessWord << "\n" << "Hearts: " << string (7-badGuessCount,'*') << endl ;
     cout << picture[badGuessCount] << endl;
 }
 
@@ -130,7 +129,17 @@ void updateGame(char input, const string& secretWord, string& guessWord, int& ba
 }
 void displayResults(const string& secretWord, const string& guessWord){
     if(secretWord==guessWord) cout << "Correct! You won!\n";
-    else cout << "Incorrect! You lost!\n" << "Chiken:((" ;
+    else cout << "Incorrect! You lost!\n" << endl ;
+
+}
+bool newGame(){
+    char ans ;
+    do{
+        cout << "New game? (y/n)" << endl ;
+        cin >> ans ;
+        if(ans=='y'||ans=='Y'){return true; break; }
+        else { return false; break; }
+    }while (1) ;
 }
 int main()
 {
@@ -139,7 +148,7 @@ int main()
   string secretWord ;
   string guessWord ;
   int badGuessCount;
-
+    do{
   initGame(secretWord, guessWord, badGuessCount) ;
 
   do {
@@ -149,6 +158,6 @@ int main()
   } while (!gameOver(secretWord,guessWord,badGuessCount));
   renderGame(secretWord,guessWord,badGuessCount);
   displayResults(secretWord,guessWord) ;
-
+    }while (newGame()==true) ;
   return 0;
 }
