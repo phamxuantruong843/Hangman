@@ -137,7 +137,7 @@ bool newGame(){
     do{
         cout << "New game? (y/n)" << endl ;
         cin >> ans ;
-        if(ans=='y'){return true; break; }
+        if(ans=='y'||ans=='Y'){return true; break; }
         else { return false; break; }
     }while (1) ;
 }
