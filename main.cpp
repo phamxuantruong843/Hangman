@@ -134,12 +134,10 @@ void displayResults(const string& secretWord, const string& guessWord){
 }
 bool newGame(){
     char ans ;
-    do{
         cout << "New game? (y/n)" << endl ;
         cin >> ans ;
-        if(ans=='y'||ans=='Y'){return true; break; }
-        else { return false; break; }
-    }while (1) ;
+        if(ans=='y'||ans=='Y') return true;
+        else return false; 
 }
 int main()
 {
